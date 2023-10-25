@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sprite Rover Control</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden; /* Prevents scrolling due to background size */
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+      .logo {
+        margin-right: 10px;
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+      .active {
+        font-weight: bold;
+        color: green;
+        margin-right: 20px;
+         margin-top: 10px;
+      }
+      .content {
+        display: flex;
+        justify-content: center; /* Centers the controls */
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+      .content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('Spector_Sprite_Ai_Mockup.jpeg');
+        background-size: cover;
+        background-position: center; /* Centers the background image */
+        opacity: 0.2;
+        z-index: -1;
+      }
+      .controls {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap; /* Prevents buttons from wrapping on smaller screens */
+      }
+      .button {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #000000;
+        color: white;
+        border: 1px solid white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <img src="Specter__Logo_Wht_250.png" alt="Spector Dynamics" />
+      </div>
+      <div class="status">Sprite Rover: <span class="active">ACTIVE</span></div>
+    </div>
+    <div class="content">
+      <div class="controls">
+        <div>
+          <button class="button" id="forward" accesskey="w" onclick="move('forward')">
+            Forward
+          </button>
+        </div>
+        <div>
+          <button class="button" id="left" accesskey="a" onclick="move('left')">
+            Left
+          </button>
+          <button class="button" id="backward" accesskey="s" onclick="move('backward')">
+            Backward
+          </button>
+          <button class="button" id="right" accesskey="d" onclick="move('right')">
+            Right
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+    
+    <script>
+      function move(direction) {
+        fetch("/move", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: "direction=" + direction,
+        });
+      }
+
+      document.onkeydown = function (e) {
+        switch (e.keyCode) {
+          case 37:
+            document.getElementById("left").click();
+            break;
+          case 38:
+            document.getElementById("forward").click();
+            break;
+          case 39:
+            document.getElementById("right").click();
+            break;
+          case 40:
+            document.getElementById("backward").click();
+            break;
+        }
+      };
+    </script>
+  </body>
+</html>

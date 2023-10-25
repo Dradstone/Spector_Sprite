@@ -1,24 +1,26 @@
 Task:
-[Objective:
+[Software Engineering Prompt for Wireless Tank Rover Control System
 
-Develop a control system for a tank rover using a Raspberry Pi Zero W. The system will consist of a locally hosted web interface on the Pi Zero W, allowing users to control two Micro Speed Reduction Motors via the L298N Motor Driver Controller Board.
+Objective:
+
+Develop a control system for a tank rover using a Raspberry Pi Zero W. The system will consist of a locally hosted web interface that should be accessible to other computers on the same network on the port :8000 on the Pi Zero W, allowing users to control two Micro Speed Reduction Motors via the L298N Motor Driver Controller Board from remote user input on the web interface.
 
 Web Interface Specifications:
 
 1. Design and Framework:
-  * Utilize Tailwind CSS.
   * Adhere to a black background with white sans-serif fonts.
+  * The web buttons must control the robots movements 
 2. Structure:
-  * Top navbar featuring a left-aligned logo and right-aligned text.
-  * Main content split equally: a placeholder for a future map on the left and control buttons (forwards, backwards, left, right) on the right.
+  * Top navbar featuring a left-aligned logo and right-aligned text that reads “Sprite Rover: ACTIVE” the word active should be bold and green.
+  * Main content split equally: a map image placeholder on the left and tank control buttons (forwards, backwards, left, right) on the right. The buttons should be arranged the same as on a keyboard. 
 3. Controls:
   * Activate rover movement via mouse clicks and keyboard arrows.
-  * Ensure a responsive and clean, futuristic, military-inspired design.
+  * Ensure a responsive and clean design.
 
 Raspberry Pi Zero W Configuration:
 
 1. Web Server:
-  * Host the control interface web page.
+  * Host the control interface web page, wifi accessible on port :8000
   * Process incoming commands to move the rover.
 2. Motor Scripting:
   * Integrate commands from the web interface to control the L298N Motor Driver and enact rover movements.
@@ -34,12 +36,14 @@ Documentation:
 * Thoroughly comment the code, explaining functions, classes, and significant logic blocks.
 * Detail dependencies or required libraries.
 * Provide an assembly/setup guide, encompassing:
-  * Raspberry Pi setup, network configurations, web server deployment, L298N connections, and boot configurations for headless operation.
+  * Raspberry Pi setup, network configurations, web server deployment, L298N connections, boot configurations for headless operation,  wiring guide for the pi to the L298N Motor Driver Controller Board, and how to connect to the web interface via separate computer.
 
 Expected Deliverables:
 
-* Complete code for web interface and Raspberry Pi scripts.
-* Comprehensive documentation and setup guide.]
+* Complete code for web interface and Raspberry Pi scripts that control the robots movements over wifi.
+* Comprehensive documentation and setup guide.
+
+]
 
 Config:
 ChatEnvConfig.clear_structure: True
@@ -66,5 +70,5 @@ Proposed_images:
 0
 
 Incorporated_images:
-0
+2
 

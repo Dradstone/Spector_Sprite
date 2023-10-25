@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sprite Rover Control</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: sans-serif;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+      .logo {
+        margin-right: 10px;
+      }
+      .active {
+        font-weight: bold;
+        color: green;
+      }
+      .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+      }
+      .map {
+        width: 50%;
+        height: auto;
+      }
+      .controls {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .button {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <img src="logo.png" alt="Logo" />
+      </div>
+      <div class="status">Sprite Rover: <span class="active">ACTIVE</span></div>
+    </div>
+    <div class="content">
+      <div class="map">
+        <img src="map_placeholder.png" alt="Map" />
+      </div>
+      <div class="controls">
+        <button class="button" accesskey="w" onclick="move('forward')">
+          Forward
+        </button>
+        <button class="button" accesskey="f" onclick="move('backward')">
+          Backward
+        </button>
+        <button class="button" accesskey="a" onclick="move('left')">
+          Left
+        </button>
+        <button class="button" accesskey="s" onclick="move('right')">
+          Right
+        </button>
+      </div>
+    </div>
+    <script>
+      function move(direction) {
+        fetch("/move", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: "direction=" + direction,
+        });
+      }
+    </script>
+  </body>
+</html>
