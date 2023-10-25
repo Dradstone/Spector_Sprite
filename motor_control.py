@@ -1,0 +1,29 @@
+'''
+Motor control module for the tank rover.
+'''
+import RPi.GPIO as GPIO
+# GPIO pin numbers for motor control
+LEFT_FORWARD_PIN = 17
+LEFT_BACKWARD_PIN = 18
+RIGHT_FORWARD_PIN = 27
+RIGHT_BACKWARD_PIN = 22
+def move_forward():
+    GPIO.output(LEFT_FORWARD_PIN, GPIO.HIGH)
+    GPIO.output(LEFT_BACKWARD_PIN, GPIO.LOW)
+    GPIO.output(RIGHT_FORWARD_PIN, GPIO.HIGH)
+    GPIO.output(RIGHT_BACKWARD_PIN, GPIO.LOW)
+def move_backward():
+    GPIO.output(LEFT_FORWARD_PIN, GPIO.LOW)
+    GPIO.output(LEFT_BACKWARD_PIN, GPIO.HIGH)
+    GPIO.output(RIGHT_FORWARD_PIN, GPIO.LOW)
+    GPIO.output(RIGHT_BACKWARD_PIN, GPIO.HIGH)
+def move_left():
+    GPIO.output(LEFT_FORWARD_PIN, GPIO.LOW)
+    GPIO.output(LEFT_BACKWARD_PIN, GPIO.HIGH)
+    GPIO.output(RIGHT_FORWARD_PIN, GPIO.HIGH)
+    GPIO.output(RIGHT_BACKWARD_PIN, GPIO.LOW)
+def move_right():
+    GPIO.output(LEFT_FORWARD_PIN, GPIO.HIGH)
+    GPIO.output(LEFT_BACKWARD_PIN, GPIO.LOW)
+    GPIO.output(RIGHT_FORWARD_PIN, GPIO.LOW)
+    GPIO.output(RIGHT_BACKWARD_PIN, GPIO.HIGH)
